@@ -1,3 +1,23 @@
-h1{
-  background-color: red;
+body{
+  border: 2px solid #777777;
+}
+
+.MovieListTitle {
+  background-color: #f2f2f2;
+  padding: 1px;
+  font-family: "Comic Sans MS", cursive, sans-serif;  
+}
+
+.BlankSpace {
+  height: 50px;
+}
+
+
+.MovieEntry {
+  padding: 8px; 
+  border: 1px solid black;
+}
+
+.movies {
+  margin: 20px;
 }
