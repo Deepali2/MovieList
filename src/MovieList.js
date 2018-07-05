@@ -6,10 +6,16 @@ import style from "./styles/style.css"
 class MovieList extends React.Component {
   constructor(props) {
     super(props);
-    this.state= {searchInput:''},
+    this.state= {
+      searchInput:'',
+      newMovie:'',
+   },    
     this.handleSearch = this.handleSearch.bind(this);
   }
   
+  addMovieTitle(newMovie) {
+
+  }
   
   handleSearch(event) {    
     this.setState({searchInput: event.target.value})
@@ -22,6 +28,15 @@ class MovieList extends React.Component {
           <h1>Movie List</h1>
         </div>
         <div className={style.BlankSpace}>
+        <div>
+          <input 
+            type="text"
+            name="Add_Movie_Title"
+            value={}
+            className={}
+            onChange={}
+          />
+        </div>
         </div>        
         <input 
           type="text" 
