@@ -13,8 +13,7 @@ class MovieList extends React.Component {
       <Movies movies = {movies}/>
       </div>      
     );
-  }
- 
+  } 
 }
 
 export default MovieList;
