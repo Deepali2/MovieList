@@ -14,5 +14,4 @@ var Movies = (props) => {
   );
 }
 
-
 export default Movies;
