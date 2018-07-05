@@ -29,13 +29,13 @@ class MovieList extends React.Component {
         </div>
         <div className={style.BlankSpace}>
         <div>
-          <input 
+          {/* <input 
             type="text"
             name="Add_Movie_Title"
             value={}
             className={}
             onChange={}
-          />
+          /> */}
         </div>
         </div>        
         <input 
@@ -45,7 +45,7 @@ class MovieList extends React.Component {
           className={style.Search} 
           onChange={this.handleSearch}
         />
-        <Movies movies = {movies.filter(movie => movie.title.includes(this.state.searchInput))}/>
+        <Movies movies = {movies.filter(movie => movie.title.toLowerCase().includes(this.state.searchInput.toLowerCase()))}/>
       </div>      
     );
   } 
