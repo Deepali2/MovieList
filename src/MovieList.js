@@ -1,22 +1,38 @@
 import React from "react";
 import Movies from "./Movies.js";
-import {movies} from "./example_data.js";
+// import {movies} from "./example_data.js";
 import style from "./styles/style.css"
 
 class MovieList extends React.Component {
   constructor(props) {
-    super(props);
+    super(props);    
     this.state= {
       searchInput:'',
-      newMovie:'',
+      movies: [],  
+      currentMovie: '',     
    },    
-    this.handleSearch = this.handleSearch.bind(this);
+    this.addMovie = this.addMovie.bind(this);
+    this.handleSearch = this.handleSearch.bind(this); 
+    this.handleNewMovieTitle = this.handleNewMovieTitle.bind(this);  
   }
   
-  addMovieTitle(newMovie) {
+  //function to add a movie 
+  addMovie() {  
+    let movieToAdd = this.state.currentMovie;    
+    this.setState(
+      {
+        movies: this.state.movies.concat([{'title': movieToAdd}]),  
+        currentMovie: '',   
+      }
+    );    
+  }
 
+  //helper function to get the movie to add from the input button
+  handleNewMovieTitle(event) {    
+    this.setState({currentMovie: event.target.value})
   }
-  
+
+  //handle search events
   handleSearch(event) {    
     this.setState({searchInput: event.target.value})
   }
@@ -29,23 +45,26 @@ class MovieList extends React.Component {
         </div>
         <div className={style.BlankSpace}>
         <div>
-          {/* <input 
+          <input 
             type="text"
-            name="Add_Movie_Title"
-            value={}
-            className={}
-            onChange={}
-          /> */}
+            placeholder="Add Movie Title Here..."     
+            className={style.addMovie} 
+            value={this.state.currentMovie}
+            onChange={this.handleNewMovieTitle} 
+                              
+          />            
+            <button className={style.addbtn} onClick={this.addMovie}>Add</button>
         </div>
-        </div>        
+        </div>               
         <input 
-          type="text" 
-          name="Search" 
+          type="text"           
+          placeholder="Search..."
           value= {this.state.searchInput}          
           className={style.Search} 
           onChange={this.handleSearch}
         />
-        <Movies movies = {movies.filter(movie => movie.title.toLowerCase().includes(this.state.searchInput.toLowerCase()))}/>
+        <Movies movies={this.state.movies}/>
+        {/* <Movies movies = {movies.filter(movie => movie.title.toLowerCase().includes(this.state.searchInput.toLowerCase()))}/> */}
       </div>      
     );
   } 
