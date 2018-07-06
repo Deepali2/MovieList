@@ -23,9 +23,6 @@ body{
 }
 
 .Search {
-<<<<<<< HEAD
-   margin: 20px;
-=======
   margin: 20px;
 }
 
@@ -35,5 +32,4 @@ body{
 
 .addbtn {
   background-color: rgb(109, 128, 0);
->>>>>>> develop
 }

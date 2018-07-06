@@ -5,14 +5,6 @@ import style from "./styles/style.css"
 
 class MovieList extends React.Component {
   constructor(props) {
-<<<<<<< HEAD
-    super(props);
-    this.state= {searchInput:''},
-    this.handleSearch = this.handleSearch.bind(this);
-  }
-  
-  
-=======
     super(props);    
     this.state= {
       searchInput:'',
@@ -41,7 +33,6 @@ class MovieList extends React.Component {
   }
 
   //handle search events
->>>>>>> develop
   handleSearch(event) {    
     this.setState({searchInput: event.target.value})
   }
@@ -53,12 +44,6 @@ class MovieList extends React.Component {
           <h1>Movie List</h1>
         </div>
         <div className={style.BlankSpace}>
-<<<<<<< HEAD
-        </div>        
-        <input 
-          type="text" 
-          name="Search" 
-=======
         <div>
           <input 
             type="text"
@@ -74,17 +59,12 @@ class MovieList extends React.Component {
         <input 
           type="text"           
           placeholder="Search..."
->>>>>>> develop
           value= {this.state.searchInput}          
           className={style.Search} 
           onChange={this.handleSearch}
         />
-<<<<<<< HEAD
-        <Movies movies = {movies.filter(movie => movie.title.includes(this.state.searchInput))}/>
-=======
         <Movies movies={this.state.movies}/>
         {/* <Movies movies = {movies.filter(movie => movie.title.toLowerCase().includes(this.state.searchInput.toLowerCase()))}/> */}
->>>>>>> develop
       </div>      
     );
   } 
