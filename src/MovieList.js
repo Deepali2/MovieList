@@ -53,7 +53,7 @@ class MovieList extends React.Component {
             onChange={this.handleNewMovieTitle} 
                               
           />            
-            <button className={style.addbtn} onClick={this.addMovie}>Add</button>
+          <button className={style.addbtn} onClick={this.addMovie}>Add</button>
         </div>
         </div>               
         <input 
@@ -63,8 +63,8 @@ class MovieList extends React.Component {
           className={style.Search} 
           onChange={this.handleSearch}
         />
-        <Movies movies={this.state.movies}/>
-        {/* <Movies movies = {movies.filter(movie => movie.title.toLowerCase().includes(this.state.searchInput.toLowerCase()))}/> */}
+        {/* <Movies movies={this.state.movies}/> */}
+        <Movies movies = {this.state.movies.filter(movie => movie.title.toLowerCase().includes(this.state.searchInput.toLowerCase()))}/>
       </div>      
     );
   } 
