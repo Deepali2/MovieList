@@ -1,6 +1,5 @@
 import React from "react";
 import MovieEntry from "./MovieEntry.js";
-// import { movies } from "./example_data.js";
 import style from "./styles/style.css"
 
 

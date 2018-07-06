@@ -1,7 +1,9 @@
 import React from "react";
 import Movies from "./Movies.js";
 // import {movies} from "./example_data.js";
-import style from "./styles/style.css"
+import style from "./styles/style.css";
+import { WATCHED_TEXT, NOT_WATCHED_TEXT } from "./MovieConstants.js";
+
 
 class MovieList extends React.Component {
   constructor(props) {
@@ -9,7 +11,7 @@ class MovieList extends React.Component {
     this.state= {
       searchInput:'',
       movies: [],  
-      currentMovie: '',     
+      currentMovie: '',  
    },    
     this.addMovie = this.addMovie.bind(this);
     this.handleSearch = this.handleSearch.bind(this); 
@@ -18,10 +20,11 @@ class MovieList extends React.Component {
   
   //function to add a movie 
   addMovie() {  
-    let movieToAdd = this.state.currentMovie;    
+    let movieToAdd = this.state.currentMovie; 
+    
     this.setState(
       {
-        movies: this.state.movies.concat([{'title': movieToAdd}]),  
+        movies: this.state.movies.concat([{ 'title': movieToAdd, 'watchStatus': NOT_WATCHED_TEXT}]),  
         currentMovie: '',   
       }
     );    
@@ -55,7 +58,9 @@ class MovieList extends React.Component {
           />            
           <button className={style.addbtn} onClick={this.addMovie}>Add</button>
         </div>
-        </div>               
+        </div>  
+        <button className={style.watchedbtn}>Watched</button>      
+        <button className={style.toWatchbtn}>To Watch</button>          
         <input 
           type="text"           
           placeholder="Search..."
@@ -64,7 +69,10 @@ class MovieList extends React.Component {
           onChange={this.handleSearch}
         />
         {/* <Movies movies={this.state.movies}/> */}
-        <Movies movies = {this.state.movies.filter(movie => movie.title.toLowerCase().includes(this.state.searchInput.toLowerCase()))}/>
+        <Movies 
+          movies = {this.state.movies.filter(movie => movie.title.toLowerCase().includes(this.state.searchInput.toLowerCase()))}
+         
+          />
       </div>      
     );
   } 

@@ -7,18 +7,20 @@ var MovieEntry = (props) => {
   return (
       <div className={style.MovieEntry}>
         {props.movie.title}
+        <button className={style.watchStatusBtn}>{props.movie.watchStatus}</button>
       </div>
   );  
 }
 
-MovieEntry.propTypes= {
-  movie: PropTypes.object.isRequired
-}
-// MovieEntry.propTypes = {
-//   movie: PropTypes.shape({
-//     title: PropTypes.string
-//   }).isRequired
-// };
+// MovieEntry.propTypes= {
+//   movie: PropTypes.object.isRequired
+// }
+MovieEntry.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string,
+    watchStatus: PropTypes.string,
+  }).isRequired
+};
 
 export default MovieEntry;
 
