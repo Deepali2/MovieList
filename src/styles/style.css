@@ -33,3 +33,7 @@ body{
 .addbtn {
   background-color: rgb(109, 128, 0);
 }
+
+.watchStatusBtn {
+  float: right;
+}
