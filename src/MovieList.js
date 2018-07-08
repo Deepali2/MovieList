@@ -11,11 +11,22 @@ class MovieList extends React.Component {
     this.state= {
       searchInput:'',
       movies: [],  
-      currentMovie: '',  
+      currentMovie: '', 
+      
+     
    },    
     this.addMovie = this.addMovie.bind(this);
     this.handleSearch = this.handleSearch.bind(this); 
     this.handleNewMovieTitle = this.handleNewMovieTitle.bind(this);  
+  }
+
+  //helper function to set the watchstatus based on a boolean value
+  watchStatus(boolean) {
+    if (boolean === true) {      
+      return WATCHED_TEXT;   
+    } else {      
+      return NOT_WATCHED_TEXT;
+    }
   }
   
   //function to add a movie 
@@ -24,7 +35,7 @@ class MovieList extends React.Component {
     
     this.setState(
       {
-        movies: this.state.movies.concat([{ 'title': movieToAdd, 'watchStatus': NOT_WATCHED_TEXT}]),  
+        movies: this.state.movies.concat([{ 'title': movieToAdd, 'watchStatus': watchStatus(false)}]),  
         currentMovie: '',   
       }
     );    
@@ -38,6 +49,14 @@ class MovieList extends React.Component {
   //handle search events
   handleSearch(event) {    
     this.setState({searchInput: event.target.value})
+  }
+
+  //function to toggle the watchStatus of a movie when button for a movie entry is clicked
+
+  toggle_watchStatus() {
+    if (this.movies.movie.watchStatus === NOT_WATCHED_TEXT) { let boolean = false; }
+    else let boolean = true;
+    return this.watchStatus(!boolean);     
   }
   
   render() {
@@ -59,8 +78,8 @@ class MovieList extends React.Component {
           <button className={style.addbtn} onClick={this.addMovie}>Add</button>
         </div>
         </div>  
-        <button className={style.watchedbtn}>Watched</button>      
-        <button className={style.toWatchbtn}>To Watch</button>          
+        <button className={style.watchedbtn}>{this.WATCHED_TEXT}</button>      
+        <button className={style.toWatchbtn}>{this.NOT_WATCHED_TEXT }</button>          
         <input 
           type="text"           
           placeholder="Search..."
