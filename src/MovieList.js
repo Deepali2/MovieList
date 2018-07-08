@@ -18,16 +18,10 @@ class MovieList extends React.Component {
     this.addMovie = this.addMovie.bind(this);
     this.handleSearch = this.handleSearch.bind(this); 
     this.handleNewMovieTitle = this.handleNewMovieTitle.bind(this);  
+    this.watchedClickHandler = this.watchedClickHandler.bind(this);
   }
 
-  //helper function to set the watchstatus based on a boolean value
-  watchStatus(boolean) {
-    if (boolean === true) {      
-      return WATCHED_TEXT;   
-    } else {      
-      return NOT_WATCHED_TEXT;
-    }
-  }
+
   
   //function to add a movie 
   addMovie() {  
@@ -35,7 +29,7 @@ class MovieList extends React.Component {
     
     this.setState(
       {
-        movies: this.state.movies.concat([{ 'title': movieToAdd, 'watchStatus': watchStatus(false)}]),  
+        movies: this.state.movies.concat([{ 'title': movieToAdd, 'watchStatus': false}]),  
         currentMovie: '',   
       }
     );    
@@ -43,20 +37,22 @@ class MovieList extends React.Component {
 
   //helper function to get the movie to add from the input button
   handleNewMovieTitle(event) {    
-    this.setState({currentMovie: event.target.value})
+    this.setState({currentMovie: event.target.value});
   }
 
   //handle search events
   handleSearch(event) {    
-    this.setState({searchInput: event.target.value})
+    this.setState({searchInput: event.target.value});
   }
 
   //function to toggle the watchStatus of a movie when button for a movie entry is clicked
-
-  toggle_watchStatus() {
-    if (this.movies.movie.watchStatus === NOT_WATCHED_TEXT) { let boolean = false; }
-    else let boolean = true;
-    return this.watchStatus(!boolean);     
+  watchedClickHandler(index) { 
+    return () =>
+      this.setState((prevState) => {
+        let newMovies = prevState.movies;// getting the previous list of movies
+        newMovies[index].watchStatus = !newMovies[index].watchStatus;//changing watch status on appropriate movie
+        return ({movies: newMovies});// changing movies in state to be the new movies with the change
+      });
   }
   
   render() {
@@ -78,8 +74,8 @@ class MovieList extends React.Component {
           <button className={style.addbtn} onClick={this.addMovie}>Add</button>
         </div>
         </div>  
-        <button className={style.watchedbtn}>{this.WATCHED_TEXT}</button>      
-        <button className={style.toWatchbtn}>{this.NOT_WATCHED_TEXT }</button>          
+        <button className={style.watchedbtn}>{WATCHED_TEXT}</button>      
+        <button className={style.toWatchbtn}>{NOT_WATCHED_TEXT }</button>          
         <input 
           type="text"           
           placeholder="Search..."
@@ -89,8 +85,8 @@ class MovieList extends React.Component {
         />
         {/* <Movies movies={this.state.movies}/> */}
         <Movies 
-          movies = {this.state.movies.filter(movie => movie.title.toLowerCase().includes(this.state.searchInput.toLowerCase()))}
-         
+          movies={this.state.movies.filter(movie => movie.title.toLowerCase().includes(this.state.searchInput.toLowerCase())) }
+          watchedClickHandler = {this.watchedClickHandler}
           />
       </div>      
     );
