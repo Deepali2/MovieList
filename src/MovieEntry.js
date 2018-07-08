@@ -10,7 +10,7 @@ var MovieEntry = (props) => {
   return (
       <div className={style.MovieEntry}>
         {props.movie.title}
-      <button className={style.watchStatusBtn} onClick={props.watchedClickHandler(props.index)}>{watchedText(props.movie.watchStatus)}</button>
+      <button className={props.movie.watchStatus ? style.watchStatusBtnGreen : style.watchStatusBtn} onClick={props.watchedClickHandler(props.index)}>{watchedText(props.movie.watchStatus)}</button>
       </div>
   );  
 }

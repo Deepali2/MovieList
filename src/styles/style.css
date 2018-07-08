@@ -37,3 +37,8 @@ body{
 .watchStatusBtn {
   float: right;
 }
+
+.watchStatusBtnGreen {
+  float: right;
+  background-color: green;
+}
