@@ -42,3 +42,11 @@ body{
   float: right;
   background-color: green;
 }
+
+.visibility {
+  visibility: visible;
+}
+
+.visibility {
+  visibility: hidden;
+}
